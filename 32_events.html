@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style = "background-color: grey; color : aliceblue;">
+    <h2>Images</h2>
+    <ul id="images">
+        <li>
+            <img width = "200px" src="1.jpg" id="photoshop" alt="photoshop">
+        </li>
+        <li>
+            <img width = "200px" src="2.png" id="japan" alt="">
+        </li>
+        <li>
+            <img width = "200px" src="3.jpg" id="river" alt="">
+        </li>
+        <li>
+            <img width = "200px" src="4.jpg" id="owl" alt="" /*onclick="alert('OWl')"*/>
+        </li>
+        <li>
+            <img width = "200px" src="1.jpg" id="prayer" alt="">
+        </li>
+        <li><a href="https://google.com" id = "google" target = "_blank">Google </a></li>
+    </ul>
+</body>
+<script>
+    // document.getElementById("owl").onclick = function(){
+    //     alert("Owl Clicked")
+    // }
+
+    // attachEvent()
+    // jQuery - on
+
+    // document.getElementById("owl").addEventListener('click',function(){
+    //     alert("Owl Clicked Again")
+    // },false)
+
+    //Here false is for "Event Propogation" (eventBubling and EventCapturing)
+
+    document.getElementById("owl").addEventListener('click',function(e){
+        console.log(e)
+    })
+
+    //IMP Parameters for Interv. of above OBJ : 
+    //type, timestamp, preventDefault, target, toElement, srcElement
+    //clientX, clientY, screenX, screenY
+    //altkey, ctrlkey, shiftkey, keyCode
+
+    // document.getElementById("images").addEventListener('click',function(e){
+    //     console.log("Clicked inside the ul")
+    // },false)
+    // document.getElementById("owl").addEventListener('click',function(e){
+    //     console.log("OWL is here")
+    //     e.stopPropagation(); //Stops propogation
+    // },false)
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     console.log("Google Clicked")
+    //     e.preventDefault()
+    //     e.stopPropagation()
+    // },false)
+
+    document.querySelector("#images").addEventListener('click',function(e){
+        // console.log(e.target)
+        console.log(e.target.parentNode)
+        console.log(e.target.tagName)
+        if(e.target.tagName==='IMG'){
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            // removeIt.parentNode.removeChild(removeIt)
+            removeIt.remove()
+        }
+        
+    },false)
+</script>
+</html>
